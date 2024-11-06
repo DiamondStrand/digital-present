@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-8 py-20 bg-[#191919] gap-4">
-      <Card className="w-[50rem] bg-[#2a2a2a] border-gray-700 text-white">
+      <Card className="w-[50rem] bg-[#2a2a2a] border-gray-700 text-white overflow-hidden">
         <CardContent className="pt-6 space-y-6">
           <div className="space-y-2">
             <h1 className="text-5xl font-bold text-center text-pink-400">Digitalt Blombud</h1>
