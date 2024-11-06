@@ -1,40 +1,29 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast"
 
 export default function Home() {
   const [recipient, setRecipient] = useState('');
   const [sender, setSender] = useState('');
   const [linkGenerated, setLinkGenerated] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const { toast } = useToast()
 
   const generateAndCopyLink = () => {
     if (!recipient || !sender) {
-      toast({
-        title: "Hoppas!",
-        description: "Något verkar vara fel. Fyll i både mottagare och avsändare för att skapa en länk.",
-      })
+      alert("Något verkar vara fel. Fyll i både mottagare och avsändare för att skapa en länk.");
       return;
     }
 
     const url = `${window.location.origin}/${recipient}?from=${sender}`;
     navigator.clipboard.writeText(url);
     setLinkGenerated(true);
-    toast({
-      title: "Länk skapad & kopierad",
-      description: "Länken har kopierats till urklipp!",
-    })
+    alert("Länken har kopierats till urklipp!");
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-8 py-20 bg-[#191919] gap-4">
-      <Card className="w-[50rem] bg-[#2a2a2a] border-gray-700 text-white overflow-hidden">
-        <CardContent className="pt-6 space-y-6">
+      <div className="w-[50rem] bg-[#2a2a2a] border border-gray-700 text-white overflow-hidden rounded-lg p-6">
+        <div className="space-y-6">
           <div className="space-y-2">
             <h1 className="text-5xl font-bold text-center text-pink-400">Digitalt Blombud</h1>
             <p className="text-xl text-center text-pink-200">Sprid glädje med en digital present</p>
@@ -53,40 +42,42 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex justify-center">
-                <Button 
+                <button 
                   onClick={() => setShowForm(true)}
-                  className="bg-pink-500 hover:bg-pink-600 text-white text-lg px-8 py-4"
+                  className="bg-pink-500 hover:bg-pink-600 text-white text-lg px-8 py-4 rounded-md"
                 >
                   Skapa din digitala present
-                </Button>
+                </button>
               </div>
             </div>
           ) : (
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom duration-500">
               <div className="w-full max-w-lg mx-auto space-y-4">
-                <Input
+                <input
+                  type="text"
                   placeholder="Vem vill du skicka blomman till?"
                   value={recipient}
                   onChange={(e) => setRecipient(e.target.value)}
-                  className="w-full bg-[#1f1f1f] border-gray-700 text-white h-12 appearance-none"
+                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-12 px-4 rounded-md"
                 />
-                <Input
+                <input
+                  type="text"
                   placeholder="Vem är blomman från?"
                   value={sender}
                   onChange={(e) => setSender(e.target.value)}
-                  className="w-full bg-[#1f1f1f] border-gray-700 text-white h-12 appearance-none"
+                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-12 px-4 rounded-md"
                 />
-                <Button 
+                <button 
                   onClick={generateAndCopyLink}
                   disabled={linkGenerated}
-                  className={`w-full text-white uppercase text-xl min-h-[3rem] ${
+                  className={`w-full text-white uppercase text-xl min-h-[3rem] rounded-md ${
                     linkGenerated 
                       ? 'bg-gray-500 cursor-not-allowed' 
                       : 'bg-pink-500 hover:bg-pink-600'
                   }`}
                 >
                   {linkGenerated ? 'Länk kopierad!' : 'Skapa och kopiera länk'}
-                </Button>
+                </button>
                 
                 {linkGenerated && (
                   <p className="text-center text-green-400 text-sm mt-4">
@@ -96,8 +87,8 @@ export default function Home() {
               </div>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
       <footer className="fixed bottom-2 w-full text-center">
         <p className="text-center text-gray-400">
           Made with ❤️ by <span className="text-pink-400">Diamond Strand</span> - 
