@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital Present 🌸
 
-## Getting Started
+Digital Present är en modern webbapplikation som låter användare skicka personliga digitala blommor med AI-genererade meddelanden. Perfekt för att sprida glädje och visa omtanke digitalt!
 
-First, run the development server:
+## ✨ Funktioner
 
+- 🎨 Interaktiva digitala blommor med animations
+- 🤖 AI-genererade personliga meddelanden
+- ✍️ Elegant handskriven textstil
+- 🔗 Delningsbara länkar för social spridning
+- 📱 Responsiv design för alla enheter
+- 🌈 Anpassningsbara teman och färger
+
+## 🚀 Kom igång
+
+### Förutsättningar
+
+- Node.js 18+ 
+- pnpm 8+
+
+### Installation
+
+1. Klona projektet
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ditt-användarnamn/digital-present.git
+cd digital-present
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Installera projektets beroenden:
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Miljövariabler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Lägg till följande miljövariabel i din `.env`-fil:
+```env
+NEXT_PUBLIC_OPENAI_API_KEY=your-api-key-here
+```
 
-## Learn More
+### Starta servern
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Projektstruktur
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+En snabb översikt över projektets struktur:
+```
+/digital-present
+├── public
+│   ├── images
+│   └── ...
+├── src
+│   ├── components
+│   ├── pages
+│   ├── styles
+│   └── ...
+└── ...
+```
 
-## Deploy on Vercel
+## 🛠️ Utveckling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+För att starta utvecklingsservern och börja arbeta på projektet:
+```bash
+pnpm dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✅ Testning
+
+För att köra tester:
+```bash
+pnpm test
+```
+
+## 🤝 Bidra
+
+Vi välkomnar bidrag! Följ dessa steg för att bidra till projektet:
+
+1. Forka projektet
+2. Skapa en ny branch (`git checkout -b feature/ny-funktion`)
+3. Gör dina ändringar och committa (`git commit -am 'Lägg till ny funktion'`)
+4. Pusha till branchen (`git push origin feature/ny-funktion`)
+5. Skapa en Pull Request
+
+## 📄 Licens
+
+Detta projekt är licensierat under MIT-licensen. Se [LICENSE](LICENSE) för mer information.
+
+## 📚 Lär dig mer
+
+För att lära dig mer om Next.js, kolla in följande resurser:
+
+- [Next.js Dokumentation](https://nextjs.org/docs) - lär dig om Next.js funktioner och API.
+- [Lär dig Next.js](https://nextjs.org/learn) - en interaktiv Next.js-tutorial.
+
+Du kan också kolla in [Next.js GitHub-repository](https://github.com/vercel/next.js) - dina synpunkter och bidrag är välkomna!
+
+## 🚀 Distribuera på Vercel
+
+Det enklaste sättet att distribuera din Next.js-app är att använda [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) från skaparna av Next.js.
+
+Kolla in vår [Next.js-distributionsdokumentation](https://nextjs.org/docs/app/building-your-application/deploying) för mer detaljer.
