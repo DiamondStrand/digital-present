@@ -5,7 +5,7 @@ import flowerAnimation from '../animations/flower.json';
 
 export default function FlowerAnimation() {
   return (
-    <div className="w-[50rem] h-[50rem]"> 
+    <div className="w-full md:w-[50rem] md:h-[50rem]"> 
       <Lottie 
         animationData={flowerAnimation}
         loop={true}

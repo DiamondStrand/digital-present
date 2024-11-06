@@ -21,8 +21,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-8 py-20 bg-[#191919] gap-4">
-      <div className="w-[50rem] bg-[#2a2a2a] border border-gray-700 text-white overflow-hidden rounded-lg p-6">
+    <div className="min-h-screen p-4 sm:p-8 bg-gradient-to-b from-gray-900 to-black flex items-center justify-center">
+      <div className="max-w-2xl mx-auto space-y-6 sm:space-y-8">
         <div className="space-y-6">
           <div className="space-y-2">
             <h1 className="text-5xl font-bold text-center text-pink-400">Digitalt Blombud</h1>
@@ -32,13 +32,12 @@ export default function Home() {
           {!showForm ? (
             <div className="space-y-8">
               <div className="space-y-4">
-                <p className="text-xl text-center text-gray-200">
+                <p className="text-lg sm:text-xl text-center text-gray-200">
                   Överraska någon speciell med en vacker digital blomma och ett personligt AI-genererat meddelande.
                 </p>
-                <p className="text-lg text-center text-gray-300">
-                  En unik gåva som sprider värme och omtanke. Perfekt för att visa uppskattning, 
-                  gratulera eller bara säga hej till någon du bryr dig om.
-                  <span className="block mt-2 text-pink-300">✨ Helt gratis och magiskt personligt ✨</span>
+                <p className="text-base sm:text-lg text-center text-gray-300">
+                  En unik gåva som sprider värme och omtanke.
+                  <span className="block mt-2 text-sm sm:text-base text-pink-300">✨ Helt gratis och magiskt personligt ✨</span>
                 </p>
               </div>
               <div className="flex justify-center">
@@ -52,25 +51,25 @@ export default function Home() {
             </div>
           ) : (
             <div className="space-y-6 animate-in fade-in slide-in-from-bottom duration-500">
-              <div className="w-full max-w-lg mx-auto space-y-4">
+              <div className="w-full max-w-lg mx-auto space-y-3 sm:space-y-4">
                 <input
                   type="text"
                   placeholder="Vem vill du skicka blomman till?"
                   value={recipient}
                   onChange={(e) => setRecipient(e.target.value)}
-                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-12 px-4 rounded-md"
+                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-10 sm:h-12 px-3 sm:px-4 rounded-md text-sm sm:text-base"
                 />
                 <input
                   type="text"
                   placeholder="Vem är blomman från?"
                   value={sender}
                   onChange={(e) => setSender(e.target.value)}
-                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-12 px-4 rounded-md"
+                  className="w-full bg-[#1f1f1f] border border-gray-700 text-white h-10 sm:h-12 px-3 sm:px-4 rounded-md text-sm sm:text-base"
                 />
                 <button 
                   onClick={generateAndCopyLink}
                   disabled={linkGenerated}
-                  className={`w-full text-white uppercase text-xl min-h-[3rem] rounded-md ${
+                  className={`w-full text-white uppercase text-base sm:text-xl py-3 sm:py-4 rounded-md ${
                     linkGenerated 
                       ? 'bg-gray-500 cursor-not-allowed' 
                       : 'bg-pink-500 hover:bg-pink-600'

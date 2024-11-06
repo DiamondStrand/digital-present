@@ -69,7 +69,7 @@ export default function RecipientPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-[#191919] gap-4">
       <FlowerAnimation />
-      <Card className="-mt-56 w-[40rem] bg-[#2a2a2a] border-gray-700 text-white">
+      <Card className="md:-mt-56 w-full md:w-[40rem] bg-[#2a2a2a] border-gray-700 text-white">
         <CardContent className="pt-6">
           {isLoading ? (
             <div className="flex justify-center">
