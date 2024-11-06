@@ -73,16 +73,16 @@ export default function RecipientPage() {
         <CardContent className="pt-6">
           {isLoading ? (
             <div className="flex justify-center">
-              <div className="animate-pulse text-pink-400">Skriver ett meddelande...</div>
+              <div className="animate-pulse text-pink-500">Skriver ett meddelande...</div>
             </div>
           ) : (
             <div className="space-y-4">
-              <p className="text-3xl text-center text-gray-200 font-handwriting">
+              <p className="text-3xl text-center text-gray-100 font-handwriting">
                 {displayedMessage}
               </p>
               {from && (
-                <p className="text-xl text-center text-pink-400 font-handwriting">
-                  - Från {from}
+                <p className="text-xl text-center font-bold text-pink-500 font-handwriting">
+                  Från {from}
                 </p>
               )}
             </div>
