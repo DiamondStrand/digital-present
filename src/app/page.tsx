@@ -1,9 +1,38 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
 
-// app/page.tsx
+import { useState } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast"
+
 export default function Home() {
+  const [recipient, setRecipient] = useState('');
+  const [sender, setSender] = useState('');
+  const [linkGenerated, setLinkGenerated] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const { toast } = useToast()
+
+  const generateAndCopyLink = () => {
+    if (!recipient || !sender) {
+      toast({
+        title: "Hoppas!",
+        description: "Något verkar vara fel. Fyll i både mottagare och avsändare för att skapa en länk.",
+      })
+      return;
+    }
+
+    const url = `${window.location.origin}/${recipient}?from=${sender}`;
+    navigator.clipboard.writeText(url);
+    setLinkGenerated(true);
+    toast({
+      title: "Länk skapad & kopierad",
+      description: "Länken har kopierats till urklipp!",
+    })
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-[#191919] gap-4">
+    <div className="flex flex-col items-center justify-center min-h-screen px-8 py-20 bg-[#191919] gap-4">
       <Card className="w-[50rem] bg-[#2a2a2a] border-gray-700 text-white">
         <CardContent className="pt-6 space-y-6">
           <div className="space-y-2">
@@ -11,17 +40,62 @@ export default function Home() {
             <p className="text-xl text-center text-pink-200">Sprid glädje med en digital present</p>
           </div>
           
-          <div className="space-y-4">
-            <p className="text-xl text-center text-gray-200">
-              Överraska någon speciell med en vacker digital blomma och ett personligt AI-genererat meddelande.
-            </p>
-            
-            <p className="text-lg text-center text-gray-300">
-              En unik gåva som sprider värme och omtanke. Perfekt för att visa uppskattning, 
-              gratulera eller bara säga hej till någon du bryr dig om. 
-              <span className="block mt-2 text-pink-300">✨ Helt gratis och magiskt personligt ✨</span>
-            </p>
-          </div>
+          {!showForm ? (
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-xl text-center text-gray-200">
+                  Överraska någon speciell med en vacker digital blomma och ett personligt AI-genererat meddelande.
+                </p>
+                <p className="text-lg text-center text-gray-300">
+                  En unik gåva som sprider värme och omtanke. Perfekt för att visa uppskattning, 
+                  gratulera eller bara säga hej till någon du bryr dig om.
+                  <span className="block mt-2 text-pink-300">✨ Helt gratis och magiskt personligt ✨</span>
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <Button 
+                  onClick={() => setShowForm(true)}
+                  className="bg-pink-500 hover:bg-pink-600 text-white text-lg px-8 py-4"
+                >
+                  Skapa din digitala present
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom duration-500">
+              <div className="w-full max-w-lg mx-auto space-y-4">
+                <Input
+                  placeholder="Vem vill du skicka blomman till?"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                  className="w-full bg-[#1f1f1f] border-gray-700 text-white h-12 appearance-none"
+                />
+                <Input
+                  placeholder="Vem är blomman från?"
+                  value={sender}
+                  onChange={(e) => setSender(e.target.value)}
+                  className="w-full bg-[#1f1f1f] border-gray-700 text-white h-12 appearance-none"
+                />
+                <Button 
+                  onClick={generateAndCopyLink}
+                  disabled={linkGenerated}
+                  className={`w-full text-white uppercase text-xl min-h-[3rem] ${
+                    linkGenerated 
+                      ? 'bg-gray-500 cursor-not-allowed' 
+                      : 'bg-pink-500 hover:bg-pink-600'
+                  }`}
+                >
+                  {linkGenerated ? 'Länk kopierad!' : 'Skapa och kopiera länk'}
+                </Button>
+                
+                {linkGenerated && (
+                  <p className="text-center text-green-400 text-sm mt-4">
+                    Länken har kopierats! Du kan nu dela den med din vän.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
       <footer className="fixed bottom-2 w-full text-center">
